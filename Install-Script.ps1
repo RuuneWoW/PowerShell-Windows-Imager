@@ -8,7 +8,7 @@ $ESETLoc = "$RemoteLoc\"#Here
 $ChromeLoc = "$RemoteLoc\"#Here
 $FirefoxLoc = "$RemoteLoc\"#Here
 $CrowdStrikeCID = Get-Content ""#Network path for license file to get customer ID if needed
-$CrowdStrikeLoc = ""
+$CrowdStrikeLoc = ""#Here
 
 #This will restart powershell in elevated permissions
 If (!([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]'Administrator')) 
@@ -187,7 +187,7 @@ else {
         Start-Process "C:\Program Files (x86)\Dell\CommandUpdate\dcu-cli.exe" -ArgumentList "/applyUpdates" -Wait -NoNewWindow
     }
     catch {
-        $DownloadURL = "https://dl.dell.com/FOLDER08847542M/1/Dell-Command-Update-Application_034D2_WIN_4.6.0_A00.EXE"
+        $DownloadURL = "https://dl.dell.com/FOLDER08847542M/1/Dell-Command-Update-Application_034D2_WIN_4.6.0_A00.EXE"#Check this to see if DCU has a new version 
         $DownloadLocation = "C:\Temp"
 
         try {
@@ -255,12 +255,12 @@ switch ($office_ver) {
         Write-Host "Office 2013 installed" -ForegroundColor Green
         if($VisioChoice -eq 'Y') {
             Write-Host "Installing Visio"
-            Start-Process "$OfficeLoc\Visio-Std-2013\x64\setup.exe" -ArgumentList "/configure $OfficeLoc\Visio-Std-2013\Visio2013Std.xml" -Wait -NoNewWindow
+            Start-Process "$OfficeLoc\Visio-Std-2013\x64\setup.exe" -ArgumentList "/configure $OfficeLoc\Visio-Std-2013\Visio2013Std.xml" -Wait -NoNewWindow #Here
             Write-Host "Visio installed" -ForegroundColor Green
         }
         if($ProjectChoice -eq 'Y') {
             Write-Host "Installing Project"
-            Start-Process "$OfficeLoc\Project-Pro-2013\x64\setup.exe" -ArgumentList "/configure $OfficeLoc\Project-Pro-2013\Visio2013Pro.xml" -Wait -NoNewWindow
+            Start-Process "$OfficeLoc\Project-Pro-2013\x64\setup.exe" -ArgumentList "/configure $OfficeLoc\Project-Pro-2013\Visio2013Pro.xml" -Wait -NoNewWindow #Here
             Write-Host "Project installed" -ForegroundColor Green
         }
     }
@@ -270,12 +270,12 @@ switch ($office_ver) {
         Write-Host "Office 2016 installed" -ForegroundColor Green
         if($VisioChoice -eq 'Y') {
             Write-Host "Installing Visio"
-            Start-Process "$OfficeLoc\Visio-Pro-2016\x64\setup.exe" -ArgumentList "/configure $OfficeLoc\Visio-Pro-2016\Visio2016Pro.xml" -Wait -NoNewWindow
+            Start-Process "$OfficeLoc\Visio-Pro-2016\x64\setup.exe" -ArgumentList "/configure $OfficeLoc\Visio-Pro-2016\Visio2016Pro.xml" -Wait -NoNewWindow #Here
             Write-Host "Visio installed" -ForegroundColor Green
         }
         if($ProjectChoice -eq 'Y') {
             Write-Host "Installing Project"
-            Start-Process "$OfficeLoc\Project-Pro-2016\x64\setup.exe" -ArgumentList "/configure $OfficeLoc\Project-Pro-2016\Visio2016Pro.xml" -Wait -NoNewWindow
+            Start-Process "$OfficeLoc\Project-Pro-2016\x64\setup.exe" -ArgumentList "/configure $OfficeLoc\Project-Pro-2016\Visio2016Pro.xml" -Wait -NoNewWindow #Here
             Write-Host "Project installed" -ForegroundColor Green
         }
         cscript "C:\Program Files\Microsoft Office\Office16\OSPP.VBS" /act
@@ -350,7 +350,7 @@ if($activationStatus.LicenseStatus -ne 1 -or $activationStatus.Description -inot
 powercfg /change monitor-timeout-ac 10
 powercfg /change standby-timeout-ac 30
 
-Remove-Item -Path "$HOME\Desktop\Install-Script.ps1" -Force -Recurse
+Remove-Item -Path "$HOME\Desktop\Install-Script.ps1" -Force -Recurse #Wherver you run the script from if it is locally
 Write-Host "Running Windows Updates"
 Install-WindowsUpdate -MicrosoftUpdate -AcceptAll -ErrorAction SilentlyContinue
 Write-Host "Restarting Computer" -ForegroundColor Yellow
