@@ -151,7 +151,7 @@ foreach ($Key in (Get-ChildItem $RegLocations) ) {
 }
 
 if (($VisioReq.IsPresent -and $VisioInstalled) -or ($ProjectReq.IsPresent-and $ProjectInstalled)) {
-    cscript "C:\Program Files\Microsoft Office\Office16\OSPP.VBS" /sethst:USRIC1KMS01.GAD.LOCAL
+    cscript "C:\Program Files\Microsoft Office\Office16\OSPP.VBS" /sethst: #kms server
     cscript "C:\Program Files\Microsoft Office\Office16\OSPP.VBS" /act
 }
 

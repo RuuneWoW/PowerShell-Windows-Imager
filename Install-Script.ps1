@@ -124,11 +124,11 @@ elseif ($LocalAdminChoice -eq 'N')
 #Domain and naming
 function Name-Computer()
 {
-    if ($env:USERDNSDOMAIN -eq "")#Enter your domain here
+    if ($env:USERDNSDOMAIN -eq $domain)
     {
         Rename-Computer -NewName $PCName -Verbose
     } 
-    elseif ($env:USERDNSDOMAIN -ne "")#Also enter domain here
+    elseif ($env:USERDNSDOMAIN -ne $domain)
     {
         Write-Warning "This computer is currently joined to another domain..."
         do { $removeDomainChoice = Read-Host "Would you like to remove it now? (Y or N)"} until (($removeDomainChoice -eq 'Y') -or ($removeDomainChoice -eq 'N')) 
